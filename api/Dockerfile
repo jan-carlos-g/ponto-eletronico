@@ -12,9 +12,7 @@ RUN yarn install
 
 # Copia o restante dos arquivos do projeto para o diretório de trabalho
 COPY . .
-RUN  docker-compose ps
 # Gera o Prisma Client
-RUN npx prisma generate
 
 # Expõe a porta que a aplicação irá rodar
 EXPOSE 3000
