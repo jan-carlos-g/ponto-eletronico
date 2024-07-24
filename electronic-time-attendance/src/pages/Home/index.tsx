@@ -53,7 +53,7 @@ const Home: React.FC = () => {
 
           // Check if the current date is in the previous days
           const todayLogExists = uniqueLogs.some((log: { date: string; }) => log.date === today);
-          
+
           if (!todayLogExists) {
             // If there's no log for today, add it with 0 hours
             uniqueLogs.unshift({
@@ -181,10 +181,12 @@ const Home: React.FC = () => {
                     <div className="time-container">
                       {previousDays.map((day, index) => {
                         const isCurrentDay = day.date === currentDate;
-                        const timeToDisplay =
-                          isCurrentDay && isClockIn
+                        const hasNoRecordedTime = !day.totalSeconds && !isClockIn && currentTime === 0;
+                        const timeToDisplay = hasNoRecordedTime
+                          ? "0h 0m"
+                          : isCurrentDay && isClockIn
                             ? formatTime(day.totalSeconds + currentTime)
-                            : isCurrentDay
+                            : index ==0 && !isClockIn
                               ? formatTime(day.totalSeconds)
                               : null;
 
