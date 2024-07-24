@@ -12,5 +12,16 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root  
       
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    container_name: "api"
+    restart: always
+    environment:
+      DATABASE_URL: "postgresql://root:root@db-postgres-ponto:5432/mydatabase"
+    depends_on:
+      - db-postgres-ponto
+
 volumes:
   dataBaseBackup:
