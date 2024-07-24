@@ -20,7 +20,7 @@ services:
     container_name: "api"
     restart: always
     environment:
-      DATABASE_URL: postgresql://root:root@db-postgres-ponto:5432/timeAttendance?schema=public
+      DATABASE_URL: postgresql://root:root@db-postgres-ponto:5435/timeAttendance?schema=public
     depends_on:
       - db-postgres-ponto
 
