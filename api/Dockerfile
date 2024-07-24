@@ -16,11 +16,8 @@ COPY . .
 # Gera o Prisma Client
 RUN npx prisma generate
 
-# Executa as migrações do Prisma
-RUN npx prisma migrate deploy
-
 # Expõe a porta que a aplicação irá rodar
 EXPOSE 3000
 
-# Comando para iniciar a aplicação
-CMD ["yarn", "start"]
+# Comando para iniciar a aplicação, incluindo as migrações
+CMD npx prisma migrate deploy && yarn start

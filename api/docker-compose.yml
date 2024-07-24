@@ -10,7 +10,8 @@ services:
       - ./dataBaseBackup:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: root
-      POSTGRES_PASSWORD: root  
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: mydatabase
       
   api:
     build: .

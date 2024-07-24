@@ -24,7 +24,6 @@ export const getActiveWorkLogSession = async (
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log("Active work log session fetched successfully:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching active work log session:", error);
@@ -65,7 +64,6 @@ export const endWorkLogSession = async (
         },
       },
     );
-    console.log("Clock out registered successfully:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error registering clock out:", error);
