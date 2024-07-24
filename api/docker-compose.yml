@@ -3,7 +3,7 @@ services:
   db-postgres-ponto:
     image: postgres:alpine
     ports:
-      - "5432:5432"
+      - "5000:3050"
     container_name: "db-postgres-ponto"
     restart: always  
     volumes:
@@ -12,6 +12,8 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
       POSTGRES_DB: timeAttendance
+      links:
+        - api
 
   api:
     build: .

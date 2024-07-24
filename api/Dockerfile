@@ -20,4 +20,4 @@ RUN npx prisma generate
 EXPOSE 3000
 
 # Comando para iniciar a aplicação, incluindo as migrações
-CMD npx prisma migrate deploy && yarn start
+CMD npx prisma migrate deploy && yarn start && yarn seed
