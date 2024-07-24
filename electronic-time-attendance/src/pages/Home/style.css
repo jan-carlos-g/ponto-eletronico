@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    width: 100%;
+    max-height: 80vh;
+}
+
+.cardBodyContent {
+    border-radius: 7px;
+    width: 200%;
+    margin-left: -50%;
+    background-color: #1a1a1a;
+    padding: 10px;
+    box-shadow: 5 4px 8px rgba(238, 238, 238, 0.918);
+}
+
+h1,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.page-content {
+    margin-top: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: #FFA500;
+}
+
+.header h2 {
+    font-size: 1.5em;
+}
+
+.current-hours {
+    text-align: center;
+    margin-bottom: 5px;
+
+}
+
+.current-hours h3 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.current-hours .time-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.current-hours .time-box {
+    background-color: #000000;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.current-hours .time-box div {
+    font-size: 1em;
+    color: #BBBBBB;
+}
+
+.start-button {
+    background-color: #1a1a1a;
+    font-weight:bolder;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: #FFA500;
+    box-shadow: #000000 1px 1px 2px;
+    padding: 15px;
+    font-size: 1.5em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.6s;
+}
+
+.start-button:hover {
+    background-color: #202020;
+}
+
+.cronometerImg {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.logout-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #BBBBBB;
+    color: #BBBBBB;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    font-size: 0.9em;
+}
+
+.logoutImg {
+    width: 20px;
+    margin-left: 8px;
+}
+
+.logout-button:hover {
+    background-color: #333333;
+}
+
+
+.previous-days {
+    font-size: 1em;
+    margin-top: 1em;
+    margin-left: 0.6em;
+}
+
+.paginationButton {
+    display: flex;
+    align-items: center;
+    justify-content: right; 
+    width: auto; 
+    padding: 3px 10px;
+    color: #FFA500; 
+    box-shadow: #1a1a1a 0px 4px 8px;
+    font-size: 1em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.6s;
+}
+.paginationButton b{
+    color:#FFA500
+}
+.paginationButton Button{
+    display: flex;
+    align-items: center;
+    justify-content: right; 
+}
+.table-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    margin-left: -50%;
+    width: 200%;
+    background-color: #1a1a1a;
+    border-radius: 4px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 0.9em;
+    padding: 10px;
+}
+
+.table thead {
+    margin-top: 1em;
+    margin-left: 10px;
+}
+
+
+.table td {
+    padding: 15px;
+    text-align: left;
+}
+/* table th:nth-child(2) {
+    text-align: right;
+}  */
+.table td:nth-child(2)  {
+    text-align: right;
+}
+/* .table th {
+    padding: 15px;
+    color: #ffffff;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: left;
+    letter-spacing: 0.05em;
+
+} */
+
+.table td {
+    color: #BBBBBB;
+    font-size: 1em;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #333;
+}
+
+
+
+.table tbody tr:hover {
+    background-color: #333333;
+}
+
+.user {
+    color: #BBBBBB;
+    font-size: 0.8em;
+    position: absolute;
+    top: 10px;
+    right: 130px;
+    margin-left: -20px;
+    padding: 10px;
+}
+
+.timerTitle {
+    color: #BBBBBB;
+    font-size: 0.8em;
+}
+
+
+
+
+
+
+@media (min-height: 1000px) and (max-height: 1368px) and (max-width:1000px)and (min-width:800px){
+    .cardBodyContent {
+        margin-top: -215%;
+        padding: 10px 20px;
+        margin-left: -55%;
+    }
+
+    .table {
+        padding: 10px 20px;
+    }
+
+    .table th,
+    .table td {
+        padding:15px 20px;
+    }
+    .user {
+        top: 50px;
+        right: 5px;
+    }
+}
+
+@media (min-height: 400px) and (max-height: 800px) and (min-width: 1050px) and (max-width:1280px){
+    .cardBodyContent {
+        padding: 10px 20px;
+        margin-left: -55%;
+        margin-top: -30%;
+    }
+
+    .table {
+        padding: 1px 20px;
+    }
+
+    .table th,
+    .table td {
+        padding:5px 20px;
+    }
+    .user {
+        top: 50px;
+        right: 5px;
+    }
+}
+
+@media (min-height: 700px) and (max-height: 1000px) and (max-width:450px)and (min-width:390px){
+    .cardBodyContent {
+        align-items: center;
+        margin-top: 0px;
+        width: 170%;
+        margin-left: -35%;
+        padding: 20px 30px;
+    }
+
+    .current-hours h3 {
+        font-size: 1.2em;
+    }
+
+    .current-hours .time-box {
+        font-size: 0.8em;
+        padding: 5px;
+    }
+
+    .start-button {
+        font-size: 0.8em;
+        padding: 8px;
+    }
+
+    .table th,
+    .table td {
+        padding: 20px 0px;
+        font-size: 0.8em;
+    }
+    .user {
+        top: 50px;
+        right: 5px;
+    }
+}
+
+@media (min-height: 600px) and (max-height: 700px) and (max-width:400px){
+    .cardBodyContent {
+        align-items: center;
+        margin-top: 25px;
+        width: 170%;
+        margin-left: -35%;
+        padding: 5px 0px;
+    }
+    .header h2 {
+        font-size: 1.5em;
+    }
+
+    .current-hours .time-box {
+        font-size: 1em;
+        padding: 5px;
+    }
+    .current-hours h3 {
+        font-size: 1.0em;
+    }
+
+    .current-hours .time-box {
+        font-size: 0.8em;
+        padding: 5px;
+    }
+
+    .start-button {
+        font-size: em;
+        padding: 8px;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px 0px;
+        font-size: 0.8em;
+    }
+    .user {
+        top: 50px;
+        right: 5px;
+    }
+}
+
+@media (max-height:999px) and (min-height:700px) and (max-width:450px)and (min-width:390px){
+    .cardBodyContent {
+        align-items: center;
+        margin-top: 0px;
+        width: 170%;
+        margin-left: -35%;
+        padding: 10px 8px;
+    }
+    .header h2 {
+        font-size: 1.5em;
+    }
+
+    .current-hours .time-box {
+        font-size: 1em;
+        padding: 5px;
+    }
+    .current-hours h3 {
+        font-size: 1.0em;
+    }
+
+    .current-hours .time-box {
+        font-size: 0.8em;
+        padding: 5px;
+    }
+
+    .start-button {
+        font-size: em;
+        padding: 8px;
+    }
+
+    .table th,
+    .table td {
+        padding: 19px 0px;
+        font-size: 0.8em;
+    }
+    .user {
+        top: 50px;
+        right: 5px;
+    }
+} 
+
+@media (max-height:999px) and (min-height:700px) and (max-width:390px){
+    .cardBodyContent {
+        align-items: center;
+        margin-top: 45px;
+        width: 160%;
+        margin-left: -30%;
+        padding: 10px 8px;
+    }
+    .header h2 {
+        font-size: 1.5em;
+    }
+
+    .current-hours .time-box {
+        font-size: 1em;
+        padding: 5px;
+    }
+    .current-hours h3 {
+        font-size: 1.0em;
+    }
+
+    .current-hours .time-box {
+        font-size: 0.8em;
+        padding: 5px;
+    }
+
+    .start-button {
+        font-size: em;
+        padding: 8px;
+    }
+
+    .table th,
+    .table td {
+        padding: 19px 0px;
+        font-size: 0.8em;
+    }
+    .user {
+        top: 50px;
+        right: 5px;
+    }
+} 
+
+@media (min-height: 1000px)and (max-height:1400px ) and (min-width:650px ) and (max-width:900px){
+    .cardBodyContent {
+        margin-top: -15%;
+        padding: 20px 20px;
+        margin-left: -50%;
+    }
+
+    .table {
+        font-size: 1.5em;
+        padding: 10px 20px;
+    }
+
+    .table th,
+    .table td {
+        padding:25px 20px;
+    }
+
+}
+@media (min-height: 1000px)and (max-height:1400px ) and (min-width:950px ) and (max-width:1200px){
+    .cardBodyContent {
+        margin-top: -15%;
+        padding: 20px 20px;
+        margin-left: -50%;
+    }
+
+    .table {
+        font-size: 1.2em;
+        padding: 10px 30px;
+    }
+
+    .table th,
+    .table td {
+        padding:45px 30px;
+    }
+  
+}
+
+@media (min-height: 1200px)and (max-height:1500px ) and (min-width:800px ) and (max-width:1200px){
+    .cardBodyContent {
+        margin-top: -15%;
+        padding: 20px 20px;
+        margin-left: -50%;
+    }
+
+    .table {
+        font-size: 1.5em;
+        padding: 5px 10px;
+    }
+
+    .table th,
+    .table td {
+        padding:45px 30px;
+    }
+  
+}
+
+@media (min-height: 600px)and (max-height:800px ) and (min-width:450px ) and (max-width:600px){
+    .cardBodyContent {
+        margin-top: 15%;
+        padding: 20px 15px;
+        margin-left: -50%;
+    }
+
+    .table {
+        padding: 0px 5px;
+    }
+
+    .table th,
+    .table td {
+        padding:10px 5px;
+    }
+    .user {
+        top: 50px;
+        right: 5px;
+    }
+}
+
+@media (min-height: 700px) and (max-height: 1000px) and (max-width:439px)and (min-width:300px){
+    .cardBodyContent {
+        align-items: center;
+        margin-top: 45px;
+        margin-left: -30%;
+        padding: 10px 10px;
+    }
+    .previous-days{
+        margin-left: 20px;
+    }
+    .current-hours h3 {
+        font-size: 1.2em;
+    }
+
+    .current-hours .time-box {
+        font-size: 0.8em;
+        padding: 5px;
+    }
+
+    .start-button {
+        font-size: 0.8em;
+        padding: 8px;
+    }
+
+    .table th,
+    .table td {
+        padding: 20px 0px;
+        font-size: 0.8em;
+    }
+    .user {
+        top: 50px;
+        right: 5px;
+    }
+}
+
+@media (min-height: 500px)and (max-height:700px ) and (min-width:900px ) and (max-width:1200px){
+    .cardBodyContent {
+        margin-top: -15%;
+        padding: 0px 20px;
+        margin-left: -50%;
+    }
+
+    .table {
+        padding: 10px 20px;
+    }
+
+    .table th,
+    .table td {
+        padding:10px 20px;
+    }
+    .user {
+        top: 50px;
+        right: 5px;
+    }
+}
