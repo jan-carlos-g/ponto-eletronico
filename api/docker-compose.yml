@@ -3,7 +3,7 @@ services:
   db-postgres-ponto:
     image: postgres:alpine
     ports:
-      - "5000:3050"
+      - "5432:5435"
     container_name: "db-postgres-ponto"
     restart: always  
     volumes:
