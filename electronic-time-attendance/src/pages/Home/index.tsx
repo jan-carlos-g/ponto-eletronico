@@ -18,18 +18,20 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout | null = null;
-    let startTime: number | null = null;
+    if (isClockIn) {
+      intervalId = setInterval(() => {
+        setCurrentTime((prevTime) => prevTime + 1);
+      }, 1000);
+    } else if (!isClockIn && currentTime !== 0) {
+      setCurrentTime(0);
+    }
 
-    const resumeTimer = () => {
-      if (startTime) {
-        const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-        setCurrentTime(elapsedTime);
-        intervalId = setInterval(() => {
-          setCurrentTime(prevTime => prevTime + 1);
-        }, 1000);
-      }
+    return () => {
+      if (intervalId) clearInterval(intervalId);
     };
+  }, [isClockIn]);
 
+  useEffect(() => {
     const fetchWorkLogs = async () => {
       if (userId && token) {
         try {
@@ -39,12 +41,27 @@ const Home: React.FC = () => {
             hours: formatTime(log.hours),
             totalSeconds: log.hours,
           }));
-          const uniqueLogs = formattedLogs.reduce((acc: WorkLog[], log: WorkLog) => {
+          const uniqueLogs = formattedLogs.reduce((acc: any, log: WorkLog) => {
             if (!acc.find((existingLog: { date: string; }) => existingLog.date === log.date)) {
               acc.push(log);
             }
             return acc;
           }, [] as PreviousDay[]);
+
+          const now = new Date();
+          const today = formatDate(now.toISOString());
+
+          // Check if the current date is in the previous days
+          const todayLogExists = uniqueLogs.some((log: { date: string; }) => log.date === today);
+          
+          if (!todayLogExists) {
+            // If there's no log for today, add it with 0 hours
+            uniqueLogs.unshift({
+              date: today,
+              hours: "0h 0m",
+              totalSeconds: 0
+            });
+          }
 
           setPreviousDays(uniqueLogs);
 
@@ -58,20 +75,10 @@ const Home: React.FC = () => {
             const sessionDateUTC = new Date(sessionDate.toISOString());
 
             const initialTime = Math.floor((nowUTC.getTime() - sessionDateUTC.getTime()) / 1000);
-            startTime = Date.now() - initialTime * 1000; 
             setCurrentTime(initialTime);
             setCurrentDate(formatDate(activeSession.startTime));
             setIsClockIn(true);
 
-            const today = formatDate(now.toISOString());
-            const todayExists = uniqueLogs.some((log: { date: string; }) => log.date === today);
-
-            if (!todayExists) {
-              setPreviousDays([
-                { date: today, hours: formatTime(initialTime), totalSeconds: initialTime },
-                ...uniqueLogs,
-              ]);
-            }
           } else {
             setCurrentTime(0);
           }
@@ -81,15 +88,7 @@ const Home: React.FC = () => {
         }
       }
     };
-
     fetchWorkLogs();
-
-    window.addEventListener("focus", resumeTimer);
-
-    return () => {
-      if (intervalId) clearInterval(intervalId);
-      window.removeEventListener("focus", resumeTimer);
-    };
   }, [userId, token]);
 
   const formatTime = (seconds: number): string => {
@@ -113,10 +112,10 @@ const Home: React.FC = () => {
       const updatedDays = previousDays.map((day) =>
         day.date === currentDate
           ? {
-              ...day,
-              totalSeconds: day.totalSeconds + currentTime,
-              hours: formatTime(day.totalSeconds + currentTime),
-            }
+            ...day,
+            totalSeconds: day.totalSeconds + currentTime,
+            hours: formatTime(day.totalSeconds + currentTime),
+          }
           : day
       );
       setPreviousDays(updatedDays);
@@ -124,8 +123,10 @@ const Home: React.FC = () => {
       try {
         if (userId && token) {
           await endWorkLogSession(userId, token, currentTime);
+          console.log("Tempo de saída registrado com sucesso!");
         }
       } catch (error) {
+        console.error("Erro ao registrar o tempo de saída:", error);
       }
     } else {
       setIsClockIn(true);
@@ -143,6 +144,7 @@ const Home: React.FC = () => {
       try {
         if (userId && token) {
           await startWorkLogSession(userId, token);
+          console.log("Sessão de trabalho iniciada com sucesso!");
         }
       } catch (error) {
         console.error("Erro ao iniciar a sessão de trabalho:", error);
@@ -162,7 +164,7 @@ const Home: React.FC = () => {
           navigate("/");
         }}
       >
-        Sair <img src={logoutImg} alt="Botão sair"className="logoutImg" />
+        Sair <img src={logoutImg} className="logoutImg" />
       </Button>
       <Row className="page-content">
         <Col lg="12">
@@ -189,7 +191,9 @@ const Home: React.FC = () => {
                         if (timeToDisplay !== null) {
                           return (
                             <div key={index}>
-                              <div className="time-box">{timeToDisplay}</div>
+                              <div className="time-box">
+                                {timeToDisplay}
+                              </div>
                               <div className="timerTitle">Horas de hoje</div>
                             </div>
                           );
@@ -204,6 +208,7 @@ const Home: React.FC = () => {
                 <Col md="12">
                   <div className="previous-days">
                     Dias anteriores
+
                     <div className="table-wrapper">
                       <Table responsive className="table">
                         <tbody>

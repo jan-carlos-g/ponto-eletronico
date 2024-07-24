@@ -38,7 +38,7 @@ label {
   font-size: 1.3em;
   margin-bottom: 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 2px;
   background-color: #2a2a2a;
   color: #FFFFFF;
   box-sizing: border-box;
@@ -49,7 +49,7 @@ label {
   width: 100%;
   padding: 15px;
   font-size: 1.5em;
-  background-color: #FFA500;
+  background-color: #e29300;
   color: #000000;
   border: none;
   border-radius: 5px;
@@ -68,7 +68,7 @@ label {
 }
 
 .title span {
-  color: #FFA500;
+  color: #e29300;
 }
 
 @keyframes fadeIn {
